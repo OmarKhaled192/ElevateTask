@@ -1,0 +1,29 @@
+<app-loading *ngIf="!product"></app-loading>
+
+<div class="row">
+  <!-- Product 1 -->
+  <div class="col-12 card">
+    <div class="product-card">
+
+      <div class="image-container">
+        <!-- <div class="image" [style.background-image]="'url('+product.image+')'"></div> -->
+        <img [src]="product.image" class="card-img-top" alt="Product 1">
+
+      </div>
+      <div class="card-body">
+        <h4 class="card-title first-line-only">{{product.title}}</h4>
+        <h2 class="card-title">{{product.category}}</h2>
+        <p class="card-title">{{product.description}}</p>
+        <p class="card-text"> <strong>$</strong> <span>{{product.price}}</span></p>
+        <p class="card-text flex gap-2 align-items-center">
+          <span>
+            <i class="fa-solid fa-star"></i>
+          </span>
+          <span>
+            {{product.rating.rate}} <span>( {{product.rating.count}} Vote )</span>
+          </span>
+        </p>
+
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,37 @@
+<app-loading *ngIf="!products"></app-loading>
+
+<div class="search-container my-2">
+  <div class="search-input m-0 p-0">
+    <p-iconfield>
+      <p-inputicon styleClass="pi pi-search" />
+      <input type="text" class=" m-0" pInputText [(ngModel)]="searchVal" (input)="getProductsFilter(searchVal)"
+        placeholder="Search for Product..." />
+    </p-iconfield>
+  </div>
+
+</div>
+<div class="row">
+  <!-- Product 1 -->
+  <div class="col-lg-3 col-md-6 col-sm-12 card" *ngFor="let product of products">
+    <div class="product-card">
+
+      <div class="image-container">
+        <div class="image" [style.background-image]="'url('+product.image+')'"></div>
+      </div>
+      <div class="card-body">
+        <h4 class="card-title first-line-only">{{product.title}}</h4>
+        <h5 class="card-title">{{product.category}}</h5>
+        <p class="card-text"> <strong>$</strong> <span>{{product.price}}</span></p>
+        <p class="card-text flex gap-2 align-items-center">
+          <span>
+            <i class="fa-solid fa-star"></i>
+          </span>
+          <span>
+            {{product.rating.rate}} <span>( {{product.rating.count}} Vote )</span>
+          </span>
+        </p>
+
+        <Button pButton (click)="viewDetails(product.id)">View Details</Button>
+      </div>
+    </div>
+  </div>
